@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [0.18.0](https://github.com/halostatue/tableau/compare/v0.17.1...v0.18.0) (2024-10-10)
+
+
+### Features
+
+* allow extensions to manually insert pages into the graph ([#96](https://github.com/halostatue/tableau/issues/96)) ([19f4ce5](https://github.com/halostatue/tableau/commit/19f4ce5f66916a57d3e4e5d16f1aeb844408a0b3))
+* allow other markup formats ([#100](https://github.com/halostatue/tableau/issues/100)) ([0d9959f](https://github.com/halostatue/tableau/commit/0d9959f6300609da0bf2874742512d0e751bea90))
+
+
+### Bug Fixes
+
+* bump MDEx and fix breaking change ([19f4ce5](https://github.com/halostatue/tableau/commit/19f4ce5f66916a57d3e4e5d16f1aeb844408a0b3))
+
 ## [0.17.1](https://github.com/elixir-tools/tableau/compare/v0.17.0...v0.17.1) (2024-08-16)
 
 
