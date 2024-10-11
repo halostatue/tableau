@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## [0.18.0](https://github.com/halostatue/tableau/compare/v0.17.1...v0.18.0) (2024-10-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* pass assigns to post/page extension rendering ([#102](https://github.com/halostatue/tableau/issues/102))
+
+### Features
+
+* add optional config/1 callback to extensions ([#104](https://github.com/halostatue/tableau/issues/104)) ([d1a5480](https://github.com/halostatue/tableau/commit/d1a548096a44b89e6b62ebdbc76d002f9be7481c))
+* allow extensions to manually insert pages into the graph ([#96](https://github.com/halostatue/tableau/issues/96)) ([19f4ce5](https://github.com/halostatue/tableau/commit/19f4ce5f66916a57d3e4e5d16f1aeb844408a0b3))
+* allow other markup formats ([#100](https://github.com/halostatue/tableau/issues/100)) ([0d9959f](https://github.com/halostatue/tableau/commit/0d9959f6300609da0bf2874742512d0e751bea90))
+* pass assigns to post/page extension rendering ([#102](https://github.com/halostatue/tableau/issues/102)) ([896bf7f](https://github.com/halostatue/tableau/commit/896bf7f1dd3ce0c4f94a8e80de9fedbbca29c3fc))
+
+
+### Bug Fixes
+
+* bump MDEx and fix breaking change ([19f4ce5](https://github.com/halostatue/tableau/commit/19f4ce5f66916a57d3e4e5d16f1aeb844408a0b3))
+* ensure extensions are loading ([9585d16](https://github.com/halostatue/tableau/commit/9585d1631240b1992bb3f6e51b5e5477eccadaee))
+* handle token format correctly in MDExConverter ([#105](https://github.com/halostatue/tableau/issues/105)) ([9585d16](https://github.com/halostatue/tableau/commit/9585d1631240b1992bb3f6e51b5e5477eccadaee))
+* handle token format correctly in RSSExtension ([9585d16](https://github.com/halostatue/tableau/commit/9585d1631240b1992bb3f6e51b5e5477eccadaee))
+* **posts,regression:** sort posts ([0677ce6](https://github.com/halostatue/tableau/commit/0677ce67985e193d41e61f88045dc118236dd4ad))
+
 ## [0.17.1](https://github.com/elixir-tools/tableau/compare/v0.17.0...v0.17.1) (2024-08-16)
 
 
