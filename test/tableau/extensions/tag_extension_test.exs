@@ -12,7 +12,8 @@ defmodule Tableau.TagExtensionTest do
         # dedups tags
         post(1, tags: ["post", "post"]),
         # post can have multiple tags, includes posts from same tag
-        post(2, tags: ["til", "post"]),
+        # tags will be converted to slugs for linking
+        post(2, tags: ["til", "post", "Today I Learned"]),
         post(3, tags: ["recipe"])
       ]
 
@@ -27,9 +28,20 @@ defmodule Tableau.TagExtensionTest do
 
       assert %{
                tags: %{
-                 %{tag: "post", title: "post", permalink: "/tags/post"} => [%{title: "Post 2"}, %{title: "Post 1"}],
-                 %{tag: "recipe", title: "recipe", permalink: "/tags/recipe"} => [%{title: "Post 3"}],
-                 %{tag: "til", title: "til", permalink: "/tags/til"} => [%{title: "Post 2"}]
+                 %{tag: "post", title: "post", permalink: "/tags/post", slug: "post"} => [
+                   %{title: "Post 2"},
+                   %{title: "Post 1"}
+                 ],
+                 %{tag: "recipe", title: "recipe", permalink: "/tags/recipe", slug: "recipe"} => [%{title: "Post 3"}],
+                 %{tag: "til", title: "til", permalink: "/tags/til", slug: "til"} => [%{title: "Post 2"}],
+                 %{
+                   tag: "Today I Learned",
+                   title: "Today I Learned",
+                   permalink: "/tags/today-i-learned",
+                   slug: "today-i-learned"
+                 } => [
+                   %{title: "Post 2"}
+                 ]
                },
                graph: graph
              } = token
@@ -39,6 +51,7 @@ defmodule Tableau.TagExtensionTest do
       assert Enum.any?(vertices, &page_with_permalink?(&1, "/tags/post"))
       assert Enum.any?(vertices, &page_with_permalink?(&1, "/tags/recipe"))
       assert Enum.any?(vertices, &page_with_permalink?(&1, "/tags/til"))
+      assert Enum.any?(vertices, &page_with_permalink?(&1, "/tags/today-i-learned"))
 
       assert Layout in vertices
     end

@@ -6,6 +6,8 @@ defmodule Tableau.TagExtension do
 
   The `@page` assign passed to the `layout` provided in the configuration is described by `t:page/0`.
 
+  Tag names will be converted to slugs using `Slug.slugify/2` with options provided in Tableau configuration.
+
   ## Configuration
 
   - `:enabled` - boolean - Extension is active or not.
@@ -79,6 +81,8 @@ defmodule Tableau.TagExtension do
 
   import Schematic
 
+  alias Tableau.Extension.Common
+
   @type page :: %{
           title: String.t(),
           tag: String.t(),
@@ -89,7 +93,8 @@ defmodule Tableau.TagExtension do
   @type tag :: %{
           title: String.t(),
           tag: String.t(),
-          permalink: String.t()
+          permalink: String.t(),
+          slug: String.t()
         }
 
   @type tags :: %{
@@ -119,9 +124,10 @@ defmodule Tableau.TagExtension do
     tags =
       for post <- posts, tag <- post |> Map.get(:tags, []) |> Enum.uniq(), reduce: Map.new() do
         acc ->
-          permalink = Path.join(permalink, tag)
+          slug = Common.slugify(tag, token)
+          permalink = Path.join(permalink, slug)
 
-          tag = %{title: tag, permalink: permalink, tag: tag}
+          tag = %{title: tag, permalink: permalink, tag: tag, slug: slug}
           Map.update(acc, tag, [post], &[post | &1])
       end
 
