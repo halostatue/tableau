@@ -128,7 +128,12 @@ defmodule Tableau.TagExtension do
           permalink = Path.join(permalink, slug)
 
           tag = %{title: tag, permalink: permalink, tag: tag, slug: slug}
-          Map.update(acc, tag, [post], &[post | &1])
+          Map.update(acc, slug, %{tag: tag, posts: [post]}, &%{tag: tag, posts: [post | &1.posts]})
+      end
+
+    tags =
+      for {_slug, %{tag: tag, posts: posts}} <- tags, into: %{} do
+        {tag, posts}
       end
 
     {:ok, Map.put(token, :tags, tags)}
