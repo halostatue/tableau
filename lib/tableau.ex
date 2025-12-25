@@ -10,6 +10,7 @@ defmodule Tableau do
   * `:converters` - mapping of file extensions to converter module. Defaults to `[md: Tableau.MDExConverter]`
   * `:markdown` - keyword
       * `:mdex` - keyword - Options to pass to `MDEx.to_html/2`
+          * `:plugins` - module list - MDEx plugin modules to attach to the processing pipeline
   * `:slug` - keyword - Options to pass to `Slug.slugify/2`
 
   ### Example
@@ -41,7 +42,8 @@ defmodule Tableau do
           footnotes: true
         ],
         render: [unsafe: true],
-        syntax_highlight: [formatter: {:html_inline, theme: "neovim_dark"}]
+        syntax_highlight: [formatter: {:html_inline, theme: "neovim_dark"}],
+        plugins: [MDExGFM]
       ]
     ]
   ```
@@ -61,9 +63,5 @@ defmodule Tableau do
 
   Will use the globally configured options, but you can also pass it overrides.
   """
-  def markdown(content, overrides \\ []) do
-    {:ok, config} = Tableau.Config.get()
-
-    MDEx.to_html!(content, Keyword.merge(config.markdown[:mdex], overrides))
-  end
+  defdelegate markdown(content, overrides \\ []), to: Tableau.MDExConverter
 end
