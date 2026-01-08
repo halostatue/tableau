@@ -9,7 +9,7 @@ defmodule Tableau do
   * `:url` - string (required) - The URL of your website.
   * `:converters` - mapping of file extensions to converter module. Defaults to `[md: Tableau.MDExConverter]`
   * `:markdown` - keyword
-      * `:mdex` - keyword - Options to pass to `MDEx.to_html/2`
+      * `:mdex` - keyword - Options to pass to `MDEx.to_html/2`. See `MDEx` documentation for list of options, as options listed here are non-standard and specific to Tableau.
           * `:plugins` - module list - MDEx plugin modules to attach to the processing pipeline
   * `:slug` - keyword - Options to pass to `Slug.slugify/2`
 
