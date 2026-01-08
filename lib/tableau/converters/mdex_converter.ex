@@ -33,6 +33,9 @@ defmodule Tableau.MDExConverter do
   end
 
   defp attach_plugins(mdex, plugins) do
-    Enum.reduce(plugins, mdex, fn mod, mdex -> mod.attach(mdex) end)
+    Enum.reduce(plugins, mdex, fn mod, mdex ->
+      Code.ensure_loaded!(mod)
+      mod.attach(mdex)
+    end)
   end
 end
