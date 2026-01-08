@@ -20,7 +20,7 @@ defmodule Tableau.MDExConverter do
   end
 
   def convert(_filepath, _front_matter, body, %{site: %{config: config}}) do
-    {plugins, mdex_config} = Keyword.pop(:plugins, config.markdown[:mdex])
+    {plugins, mdex_config} = Keyword.pop(config.markdown[:mdex], :plugins, [])
     render!(body, mdex_config, plugins)
   end
 
