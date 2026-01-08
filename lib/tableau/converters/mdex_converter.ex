@@ -11,24 +11,17 @@ defmodule Tableau.MDExConverter do
   def markdown(content, overrides \\ []) do
     {:ok, config} = Tableau.Config.get()
 
-    {plugins, mdex_config} = resolve_plugins(config, overrides)
+    {plugins, mdex_config} =
+      config.markdown[:mdex]
+      |> Keyword.merge(overrides)
+      |> Keyword.pop(:plugins, [])
 
     render!(content, mdex_config, plugins)
   end
 
   def convert(_filepath, _front_matter, body, %{site: %{config: config}}) do
-    {plugins, mdex_config} = resolve_plugins(config)
-
+    {plugins, mdex_config} = Keyword.pop(:plugins, config.markdown[:mdex])
     render!(body, mdex_config, plugins)
-  end
-
-  defp resolve_plugins(config, overrides \\ []) do
-    config.markdown[:mdex]
-    |> Keyword.merge(overrides, fn
-      :plugins, left, right -> List.wrap(right) ++ List.wrap(left)
-      _, _, v -> v
-    end)
-    |> Keyword.pop(:plugins, [])
   end
 
   defp render!(content, mdex_config, plugins) do
