@@ -1,5 +1,118 @@
 # CHANGELOG
 
+## [0.31.0](https://github.com/halostatue/tableau/compare/v0.30.0...v0.31.0) (2026-01-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* update to MDEx 0.10 ([#169](https://github.com/halostatue/tableau/issues/169))
+* update mdex to 0.9
+* bump mdex to 0.7 ([#143](https://github.com/halostatue/tableau/issues/143))
+* **extensions:** Extensions no longer implement a `run/1` callback. They can implement a callback named after the build phase: `pre_build/1`, `pre_render/1`, etc
+* bump min mdex version to 0.4
+* :pre_write extensions now are run after rendering the graph, but before writing to disk. Previously, the body content of each page would not have been converted yet, but now it will. This should enable anyone to modify the HTML after other extensions converter it.
+* pass assigns to post/page extension rendering ([#102](https://github.com/halostatue/tableau/issues/102))
+* uri encode permalink
+* improve slug generation ([#51](https://github.com/halostatue/tableau/issues/51))
+* use DateTimeParser for date property ([#49](https://github.com/halostatue/tableau/issues/49))
+* convert all yaml keys to atoms
+* begin rewrite ([#3](https://github.com/halostatue/tableau/issues/3))
+
+### Features
+
+* add optional config/1 callback to extensions ([#104](https://github.com/halostatue/tableau/issues/104)) ([d1a5480](https://github.com/halostatue/tableau/commit/d1a548096a44b89e6b62ebdbc76d002f9be7481c))
+* allow elixir scripts for data extension ([#25](https://github.com/halostatue/tableau/issues/25)) ([66416c1](https://github.com/halostatue/tableau/commit/66416c1477b61697201cbd9afd6bb1a936c95fe7))
+* allow extensions to manually insert pages into the graph ([#96](https://github.com/halostatue/tableau/issues/96)) ([19f4ce5](https://github.com/halostatue/tableau/commit/19f4ce5f66916a57d3e4e5d16f1aeb844408a0b3))
+* allow nested directories of posts ([588a7d4](https://github.com/halostatue/tableau/commit/588a7d401a6ba6c5cea63fcd569b644be6b84e47))
+* allow other markup formats ([#100](https://github.com/halostatue/tableau/issues/100)) ([0d9959f](https://github.com/halostatue/tableau/commit/0d9959f6300609da0bf2874742512d0e751bea90))
+* arbitrary frontmatter keys in permalink ([2b38b43](https://github.com/halostatue/tableau/commit/2b38b43a0bbe7c56035a1059cdfbea1e9add5831))
+* automatically generate post ids ([#33](https://github.com/halostatue/tableau/issues/33)) ([b5bf6df](https://github.com/halostatue/tableau/commit/b5bf6dfc24a2c83288262c10604a1e86defafe3b))
+* begin rewrite ([#3](https://github.com/halostatue/tableau/issues/3)) ([db2bf94](https://github.com/halostatue/tableau/commit/db2bf943844721a489dcc60f7c46d1053815b4d6))
+* bump mdex to 0.7 ([#143](https://github.com/halostatue/tableau/issues/143)) ([a375806](https://github.com/halostatue/tableau/commit/a375806e52e6afeb77aa26db26e873c0ee6e0187))
+* bump min mdex version to 0.4 ([dac5ddd](https://github.com/halostatue/tableau/commit/dac5ddd24c40e426a49082947611df64d2332e51))
+* configurable development server root  ([#59](https://github.com/halostatue/tableau/issues/59)) ([641cb20](https://github.com/halostatue/tableau/commit/641cb2062cf146c5c3b66553667d1b933321f75a))
+* convert all yaml keys to atoms ([2bea559](https://github.com/halostatue/tableau/commit/2bea559197198708788e3962a3cfd63915c0f1d8))
+* copy static assets ([ad4281b](https://github.com/halostatue/tableau/commit/ad4281b92969c82b6605235d509e7a21bbbe3fa9))
+* data extension ([#24](https://github.com/halostatue/tableau/issues/24)) ([736da42](https://github.com/halostatue/tableau/commit/736da42d5cea3495942579b68da8349f6aa4e58f))
+* **dev_server:** error page for compile and build errors ([#120](https://github.com/halostatue/tableau/issues/120)) ([0873535](https://github.com/halostatue/tableau/commit/08735357d587b2b1a444fefb00b691dce48d2f3c))
+* ex_doc ([#4](https://github.com/halostatue/tableau/issues/4)) ([963b4ba](https://github.com/halostatue/tableau/commit/963b4ba1ba46a485ba1b2296d507a91a7e1e613d))
+* extension priority ([#16](https://github.com/halostatue/tableau/issues/16)) ([c6f6444](https://github.com/halostatue/tableau/commit/c6f6444e0e6571990ed8eb9dda85ecbc37e06743))
+* extensions ([#13](https://github.com/halostatue/tableau/issues/13)) ([333437f](https://github.com/halostatue/tableau/commit/333437fa5ddeef29135e0c0070cea0e5140e1f9d))
+* **extensions:** pre_render phase ([#138](https://github.com/halostatue/tableau/issues/138)) ([a8a819e](https://github.com/halostatue/tableau/commit/a8a819e01d431afdb861641a636c61d80e8f18d4))
+* **extensions:** pre-write extensions ([#83](https://github.com/halostatue/tableau/issues/83)) ([12d1c7f](https://github.com/halostatue/tableau/commit/12d1c7f8f0c566fc469e6abb3415c21a3c989b10))
+* extract web dev utils ([#31](https://github.com/halostatue/tableau/issues/31)) ([af98ea8](https://github.com/halostatue/tableau/commit/af98ea843521c4af1fcdc7d52dd131cea92277c0))
+* fall back to first &lt;h1&gt; as title if no title in frontmatter ([#36](https://github.com/halostatue/tableau/issues/36)) ([707f4ef](https://github.com/halostatue/tableau/commit/707f4ef33529507cc41a2728a960ba9b84b12ae1))
+* PageExtension ([162420b](https://github.com/halostatue/tableau/commit/162420b01d313dcf77df2dc0b93b5bfed7357581))
+* **pages, posts:** use custom converter in frontmatter ([#113](https://github.com/halostatue/tableau/issues/113)) ([e39efa4](https://github.com/halostatue/tableau/commit/e39efa42c5321ccb7f14384dc15e381bbda138af)), closes [#112](https://github.com/halostatue/tableau/issues/112)
+* **page:** support sourcing from multiple directories ([#134](https://github.com/halostatue/tableau/issues/134)) ([0e1115b](https://github.com/halostatue/tableau/commit/0e1115b8e5c68afaf4825dcafe1b07a9a2e87c0b))
+* pass assigns to post/page extension rendering ([#102](https://github.com/halostatue/tableau/issues/102)) ([896bf7f](https://github.com/halostatue/tableau/commit/896bf7f1dd3ce0c4f94a8e80de9fedbbca29c3fc))
+* pass values from page through to layouts ([996d7de](https://github.com/halostatue/tableau/commit/996d7de2816f679d5e40e76bed81cbf30c5d7da0))
+* post extension ([#22](https://github.com/halostatue/tableau/issues/22)) ([16d1c14](https://github.com/halostatue/tableau/commit/16d1c1428b8d4ca1745adddd221b50ec2467a99b))
+* **posts:** allow multiple source directories ([#130](https://github.com/halostatue/tableau/issues/130)) ([4220c6e](https://github.com/halostatue/tableau/commit/4220c6e62aba8b19809a392b1275e65bf430153c))
+* **posts:** global permalink and layout ([#30](https://github.com/halostatue/tableau/issues/30)) ([c47e9e5](https://github.com/halostatue/tableau/commit/c47e9e5952df91034533eba5d4f1fe8a89b676ab))
+* RSS extension ([#23](https://github.com/halostatue/tableau/issues/23)) ([4d67147](https://github.com/halostatue/tableau/commit/4d67147f931605ae43ecadb6d67630703338eeba))
+* **rss:** multiple feeds ([#125](https://github.com/halostatue/tableau/issues/125)) ([3803ee5](https://github.com/halostatue/tableau/commit/3803ee5002576dd97515f393ca45ddfb4c60615d))
+* run pre-write extensions after render but before write ([#111](https://github.com/halostatue/tableau/issues/111)) ([b09ce49](https://github.com/halostatue/tableau/commit/b09ce49c6213fcddcfc99c32b41a15528337887e))
+* site assign ([#20](https://github.com/halostatue/tableau/issues/20)) ([d766c22](https://github.com/halostatue/tableau/commit/d766c22cc9d01927fde06080db7fd3e44473f745))
+* sitemap extension ([#45](https://github.com/halostatue/tableau/issues/45)) ([f9a97a3](https://github.com/halostatue/tableau/commit/f9a97a3536ba547012882222c39da80eb907addf))
+* switch from cowboy to bandit ([36cccc9](https://github.com/halostatue/tableau/commit/36cccc9c14b1fc8e27f71fdf7629f029d50c3bac))
+* **tags:** slugify tag names ([#164](https://github.com/halostatue/tableau/issues/164)) ([00defac](https://github.com/halostatue/tableau/commit/00defaca3b1751d7e8c9aa5bc680b5f2a9790948))
+* **tags:** tag extension ([#127](https://github.com/halostatue/tableau/issues/127)) ([286e3e8](https://github.com/halostatue/tableau/commit/286e3e859c5477f1ed3f23e5bf0b4305397cc3ee))
+* update mdex to 0.9 ([acee4e4](https://github.com/halostatue/tableau/commit/acee4e4c421a989a80dbd165f6e73cdcda4ca07f))
+* update to MDEx 0.10 ([#169](https://github.com/halostatue/tableau/issues/169)) ([25edb37](https://github.com/halostatue/tableau/commit/25edb37ef2a782f4408281445d3ddc54e61bed53))
+* update to MDEx 0.11 ([#172](https://github.com/halostatue/tableau/issues/172)) ([95de2af](https://github.com/halostatue/tableau/commit/95de2af52826cea38c15e2f258edd44f7aed7391))
+* use DateTimeParser for date property ([#49](https://github.com/halostatue/tableau/issues/49)) ([78cb446](https://github.com/halostatue/tableau/commit/78cb446e87a1b9097042d140888fe61406224ed3))
+* use MDEx for markdown ([dea822e](https://github.com/halostatue/tableau/commit/dea822ee8202832652ad5226f07974e2cfd09b94))
+* write pages with .html permalink to corresponding file([#115](https://github.com/halostatue/tableau/issues/115)) ([8c5a614](https://github.com/halostatue/tableau/commit/8c5a61483e9ee6e7195bb73347eb1ae091dd3dd6))
+
+
+### Bug Fixes
+
+* actually respect the "enabled" key in `use Tableau.Extension` ([b09ce49](https://github.com/halostatue/tableau/commit/b09ce49c6213fcddcfc99c32b41a15528337887e))
+* add base_path to config schema ([#68](https://github.com/halostatue/tableau/issues/68)) ([03a43d4](https://github.com/halostatue/tableau/commit/03a43d4d9e992d4f9268d482d3cd427a99b3f7e0))
+* allow atom layout module names ([#108](https://github.com/halostatue/tableau/issues/108)) ([c128593](https://github.com/halostatue/tableau/commit/c1285938d06d2e7ce6b053ae788cdad47670ed2a))
+* always preload modules ([f083b46](https://github.com/halostatue/tableau/commit/f083b46cc425fdf22b8c2685f0b5932360eb3c98))
+* **build:** capture pre_write page changes ([#162](https://github.com/halostatue/tableau/issues/162)) ([74bf8fb](https://github.com/halostatue/tableau/commit/74bf8fb1ee9e6d916a6a2cd80a709bfe41bd076d))
+* bump MDEx and fix breaking change ([19f4ce5](https://github.com/halostatue/tableau/commit/19f4ce5f66916a57d3e4e5d16f1aeb844408a0b3))
+* correctly create page modules ([8ea0936](https://github.com/halostatue/tableau/commit/8ea09369396e21f51336eaca05ee64bf57623038))
+* delete obsolete files ([#5](https://github.com/halostatue/tableau/issues/5)) ([12768e2](https://github.com/halostatue/tableau/commit/12768e2fe407e598523afa6e9785220588884db8))
+* ensure extensions are loading ([9585d16](https://github.com/halostatue/tableau/commit/9585d1631240b1992bb3f6e51b5e5477eccadaee))
+* **extensions:** don't require a config module ([12d1c7f](https://github.com/halostatue/tableau/commit/12d1c7f8f0c566fc469e6abb3415c21a3c989b10))
+* fix deprecation warnings for Logger.warn/1 ([#10](https://github.com/halostatue/tableau/issues/10)) ([0b13494](https://github.com/halostatue/tableau/commit/0b13494c35628236d152fe780971bec8a7bf8dd3))
+* **front_matter:** don't fail when parsing without a body ([#141](https://github.com/halostatue/tableau/issues/141)) ([86e0106](https://github.com/halostatue/tableau/commit/86e0106d93306daa6130cc2093dc3848381d0880))
+* handle token format correctly in MDExConverter ([#105](https://github.com/halostatue/tableau/issues/105)) ([9585d16](https://github.com/halostatue/tableau/commit/9585d1631240b1992bb3f6e51b5e5477eccadaee))
+* handle token format correctly in RSSExtension ([9585d16](https://github.com/halostatue/tableau/commit/9585d1631240b1992bb3f6e51b5e5477eccadaee))
+* improve slug generation ([#51](https://github.com/halostatue/tableau/issues/51)) ([bbc702d](https://github.com/halostatue/tableau/commit/bbc702dcaf3fde50d73b851a2df07900400e0ef6))
+* include page/layout behaviour in postlude ([06ef33e](https://github.com/halostatue/tableau/commit/06ef33e26a1c2bd32b2ae4b16be984d15ab0b271))
+* include toke.site.pages earlier in the pipeline ([1c78914](https://github.com/halostatue/tableau/commit/1c789148607a67d38ac99773a07f110d506144cc))
+* make frontmatter layout optional ([#38](https://github.com/halostatue/tableau/issues/38)) ([b5ae96b](https://github.com/halostatue/tableau/commit/b5ae96b67699aa6db2ae90ec82b7c9787d518b97))
+* minimize deps ([#122](https://github.com/halostatue/tableau/issues/122)) ([91d84c0](https://github.com/halostatue/tableau/commit/91d84c03e44e10080723a21918e1296d1b9d0ea2))
+* only use ex_doc in dev ([ab7d2bc](https://github.com/halostatue/tableau/commit/ab7d2bccfb78dde9d7ab9d55bd7535e460f1ffa6))
+* **posts,page:** handle path based permalinks ([4c71375](https://github.com/halostatue/tableau/commit/4c71375d0cd106d93ae75f7ec26f450f62250b9d))
+* **posts,regression:** sort posts ([0677ce6](https://github.com/halostatue/tableau/commit/0677ce67985e193d41e61f88045dc118236dd4ad))
+* **posts:** pull correct config key ([0281348](https://github.com/halostatue/tableau/commit/0281348ac4b56597273fa157b8ed1247f6e05e68))
+* properly encode title in rss feed ([#85](https://github.com/halostatue/tableau/issues/85)) ([9382afa](https://github.com/halostatue/tableau/commit/9382afa3ca14149a9fac1b6a4f8b2044d6e0f946))
+* refresh graph after running extensions ([fbb2621](https://github.com/halostatue/tableau/commit/fbb2621ee92d1211faed6c3d21ae6fc07f1c135f))
+* remove unused dep ([d626cb8](https://github.com/halostatue/tableau/commit/d626cb841cb97ed16d94fcfcce1da9453c108fe6))
+* removed dbg from router ([d7961c2](https://github.com/halostatue/tableau/commit/d7961c20cbcef0eedc11ea8565e49dd6d5c6f9a3))
+* rss moduledoc ([#55](https://github.com/halostatue/tableau/issues/55)) ([788f09d](https://github.com/halostatue/tableau/commit/788f09d4c695dbc572fb974da6f71a13aceca372))
+* **rss:** convert post body ([#135](https://github.com/halostatue/tableau/issues/135)) ([0aa6185](https://github.com/halostatue/tableau/commit/0aa61854badce32f9e6ce70139ddfe08af88cb7c))
+* **rss:** don't enable by default ([#150](https://github.com/halostatue/tableau/issues/150)) ([fb93438](https://github.com/halostatue/tableau/commit/fb93438f66831e4de8660e7faf6d6dd99f784f10)), closes [#149](https://github.com/halostatue/tableau/issues/149)
+* **sitemap:** sitemap custom tags ([#124](https://github.com/halostatue/tableau/issues/124)) ([2ef75da](https://github.com/halostatue/tableau/commit/2ef75da49db9f21bca1400ebf48eda23d78bc1e0))
+* start telemetry app to handle warning logs ([#62](https://github.com/halostatue/tableau/issues/62)) ([97e1fba](https://github.com/halostatue/tableau/commit/97e1fba6f91f0b7872bcd904b90286572974ce77)), closes [#61](https://github.com/halostatue/tableau/issues/61)
+* **tags:** disable by default ([f62c257](https://github.com/halostatue/tableau/commit/f62c257347f2236fa4f2fd883f49a169cae799bf)), closes [#131](https://github.com/halostatue/tableau/issues/131)
+* typos ([#41](https://github.com/halostatue/tableau/issues/41)) ([8e47467](https://github.com/halostatue/tableau/commit/8e47467ba060891e520d89d51789a502447e7436))
+* upgrade floki ([2cb4951](https://github.com/halostatue/tableau/commit/2cb49517cf4b6a11e7dbb9e53abf97556272acdf))
+* uri encode permalink ([3fbc2c7](https://github.com/halostatue/tableau/commit/3fbc2c7ad885209dc1cf92a1265519e59bc96d9f)), closes [#80](https://github.com/halostatue/tableau/issues/80)
+* urls in rss output ([#47](https://github.com/halostatue/tableau/issues/47)) ([66d15d4](https://github.com/halostatue/tableau/commit/66d15d41049fc5e7b72c7d5514c150e401600542))
+
+
+### Performance Improvements
+
+* improve live reload performance ([#110](https://github.com/halostatue/tableau/issues/110)) ([e0cc106](https://github.com/halostatue/tableau/commit/e0cc106343d1762ccc2f438a967e19194d5417b1))
+* render the graph in parallel ([b09ce49](https://github.com/halostatue/tableau/commit/b09ce49c6213fcddcfc99c32b41a15528337887e))
+* speed up page and post extensions ([#64](https://github.com/halostatue/tableau/issues/64)) ([357d0f9](https://github.com/halostatue/tableau/commit/357d0f9b2fb46be8cbb87793704a93c92b9130c6)), closes [#48](https://github.com/halostatue/tableau/issues/48)
+
 ## [0.30.0](https://github.com/elixir-tools/tableau/compare/v0.29.0...v0.30.0) (2026-01-24)
 
 
